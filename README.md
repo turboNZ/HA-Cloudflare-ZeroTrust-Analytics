@@ -17,7 +17,7 @@ Home Assistant Custom Component to present analytic data from Cloudflare Zero Tr
      - Accessed Applications.
   
 ## Configuration:
-###NOTES: Currently only tested with a Global Access token from Cloudflare. Will update with correct API scopes once I've had time. This integration can also currently only be configured in YAML. 
+### NOTES: Currently only tested with a Global Access token from Cloudflare. Will update with correct API scopes once I've had time. This integration can also currently only be configured in YAML. 
 
 1) Obtian your cloudflare account ID. This is displayed in the URL when logged into your Cloudflare dashboard.
 
