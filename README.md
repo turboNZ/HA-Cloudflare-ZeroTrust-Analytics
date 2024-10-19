@@ -1,5 +1,5 @@
 # HA-Cloudflare-ZeroTrust-Analytics
-Home Assistant Custom Component to present live data from Cloudflare Zero Trust Analytics
+Home Assistant Custom Component to present analytic data from Cloudflare Zero Trust.
 
 [HA-Cloudflare-ZeroTrust-Analytics](https://github.com/turboNZ/HA-Cloudflare-ZeroTrust-Analytics) is a custom component for [Home Assistant](https://www.home-assistant.io/) that allows users to ingest Analytics data directly into Home Assistant via API.
 
