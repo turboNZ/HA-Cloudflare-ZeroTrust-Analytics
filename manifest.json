@@ -1,0 +1,8 @@
+{
+  "domain": "cloudflare_analytics",
+  "name": "Cloudflare Analytics",
+  "version": "1.0",
+  "requirements": ["requests"],
+  "dependencies": [],
+  "codeowners": ["@turboNZ"]
+}
