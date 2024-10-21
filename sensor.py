@@ -6,6 +6,7 @@ from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 import homeassistant.helpers.config_validation as cv
 import asyncio
+import voluptuous as vol
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -32,7 +33,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
     # Dictionary to keep track of existing user sensors
     existing_user_sensors = {}
 
-    # Fetch connected users and create sensors for each
+
     connected_users_data = await cloudflare_api.get_data()
     connected_users = [item for item in connected_users_data if item.get('allowed')]
     
@@ -94,7 +95,7 @@ class CloudflareApplicationsAccessedSensor(Entity):
             applications_accessed = len(set(item['app_domain'] for item in data if item.get('allowed')))
             self._state = applications_accessed
             self._attributes = {"applications_accessed": applications_accessed}
-        except requests.RequestException as e:
+        except Exception as e:
             _LOGGER.error("Error fetching data from Cloudflare: %s", e)
             self._state = None
             self._attributes = {}
@@ -123,7 +124,7 @@ class CloudflareFailedLoginsSensor(Entity):
             failed_logins = len([item for item in data if not item.get('allowed')])
             self._state = failed_logins
             self._attributes = {"failed_logins": failed_logins}
-        except requests.RequestException as e:
+        except Exception as e:
             _LOGGER.error("Error fetching data from Cloudflare: %s", e)
             self._state = None
             self._attributes = {}
@@ -149,7 +150,6 @@ class CloudflareConnectedUserSensor(Entity):
 
     async def async_update(self):
         try:
-            # Fetch the latest data
             data = await self._cloudflare_api.get_data()
             user_data = next((item for item in data if item['user_email'] == self._user_data['user_email'] and item.get('allowed')), None)
             if user_data:
@@ -159,7 +159,6 @@ class CloudflareConnectedUserSensor(Entity):
             self._attributes = {}
 
     def update_user_data(self, new_data):
-        # Update the user data with the latest access information
         self._user_data = new_data
         self._attributes = {
             "user_email": new_data.get("user_email"),
@@ -168,4 +167,6 @@ class CloudflareConnectedUserSensor(Entity):
             "ip_address": new_data.get("ip_address"),
             "created_at": new_data.get("created_at"),
             "ray_id": new_data.get("ray_id"),
+            "country": new_data.get("country"),
+            "action": new_data.get("action"),
         }
