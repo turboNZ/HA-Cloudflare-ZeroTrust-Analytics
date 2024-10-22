@@ -10,7 +10,9 @@ Home Assistant Custom Component to present analytic data from Cloudflare Zero Tr
      - IP Address
      - Connection ( Cloudflare Authentication, SSO provider information)
      - Created time
-     - Ray ID 
+     - Ray ID
+     - Country (ISO Country Code)
+     - Action (E.G. Login / Logout)
    
  - Sensor displaying data from the following Cloudflare Analytics data:
      - Failed Logins
