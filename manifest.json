@@ -1,8 +1,11 @@
 {
   "domain": "cloudflare_analytics",
   "name": "Cloudflare Analytics",
-  "version": "0.2",
+  "version": "0.2.1",
   "requirements": ["requests"],
   "dependencies": [],
-  "codeowners": ["@turboNZ"]
+  "codeowners": ["@turboNZ"],
+  "integration_type": "service",
+  "iot_class": "cloud_polling",
+  "issues_tracker": "https://github.com/turboNZ/HA-Cloudflare-ZeroTrust-Analytics/issues"
 }
