@@ -137,6 +137,10 @@ class CloudflareConnectedUserSensor(Entity):
         self._cloudflare_api = cloudflare_api
 
     @property
+    def unique_id(self):
+        return f"cloudflare_connected_user_{self._user_data['user_email']}"
+
+    @property
     def name(self):
         return f"Cloudflare Connected User {self._user_data['user_email']}"
 
